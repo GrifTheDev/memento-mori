@@ -1,0 +1,51 @@
+---
+const { title, timestamp, id } = Astro.props;
+---
+
+<script define:vars={{ timestamp, id }}>
+  window.addEventListener("load", () => {
+    document.querySelector(".time").classList.replace("time", "time-" + id);
+    setInterval(() => {
+      const dateToday = new Date().getTime();
+      const dateTarget = Number(timestamp);
+
+      var timeleft = dateTarget - dateToday;
+
+      var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+      var hours = Math.floor(
+        (timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+
+      if (days == 0) {
+        document.querySelector(".time-" + id).style.color = "orange";
+      } else if (days < 7) {
+        document.querySelector(".time-" + id).style.color = "yellow";
+      }
+      if (days == 0 && hours == 0 && minutes == 0 && seconds == 0) {
+
+        document.querySelector(".time-" + id).innerHTML = "0d : 0hrs : 0min : 0sec";
+        document.querySelector(".time-" + id).style.color = "red";
+
+      } else {
+        document.querySelector(
+          ".time-" + id
+        ).innerHTML = `${days}d : ${hours}hrs : ${minutes}min : ${seconds}sec`;
+      }
+    }, 1000);
+  });
+</script>
+
+<div class="container">
+  <h2>{title}</h2>
+  <h3 class="time">DDd : HHhrs : MMmin : SSsec</h3>
+</div>
+
+<style>
+  .container {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+  }
+</style>

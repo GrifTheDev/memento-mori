@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# Until such a time as I make it so that the website reads names from a file, for privacy reasons, the main index.astro page will be removed from GitHub commits. Inside there is nothing but just a short paragraph and a bunch of timer component callouts.
+# For now, there is a sample.index.astro file that can be used to test the website locally.
+src/pages/index.astro
