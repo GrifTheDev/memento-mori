@@ -1,0 +1,36 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout>
+  <main>
+    <!-- Check if a memory has already been created for today. If not, create a new memory. If so, display the memory. Make it so that the memory archive can always be displayed. -->
+    <div class="main-container">
+      <h1 class="title">What is today's memory?</h1>
+      <textarea class="memory"></textarea>
+      <button class="submit">Submit</button>
+    </div>
+    <footer>Made with ❤️ by <a href="https://github.com/GrifTheDev">Teo</a>.</footer>
+  </main>
+</MainLayout>
+
+<style>
+  .main-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 95vh;
+  }
+
+  .memory {
+    width: 400px;
+    height: 50px; 
+  }
+  .submit {
+    margin-top: 5px
+  }
+  footer {
+    text-align: center;
+  }
+</style>
